@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Text Counter</string>
+    <string name="str_toast_text_copied">Text Copied</string>
+    <string name="str_toast_auto_text_on">Auto counting text is ON</string>
+    <string name="str_toast_auto_text_off">Auto counting text is OFF</string>
+    <string name="str_btn_count">Count: 0 Char.</string>
+    <string name="str_hint_enter_a_text_here_top">Enter a text here - TOP</string>
+    <string name="str_btn_copy">Copy</string>
+    <string name="str_chk_auto_count">Auto Count</string>
+    <string name="str_hint_enter_a_text_here_bottom">Enter a text here - Bottom</string>
+</resources>

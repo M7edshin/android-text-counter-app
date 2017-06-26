@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="shahin.textcounter.CompareTwo"
+    android:padding="@dimen/padding_10"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:id="@+id/txtTopString"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="@string/str_hint_enter_a_text_here_top"
+                android:gravity="center"
+                style="@style/StyleTopEditText"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTopFunction"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnTopStringCount"
+                    style="@style/StyleTopButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_btn_count" />
+
+                <ImageView
+                    android:id="@+id/imgTopStringCopy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_copy_content"
+                    style="@style/StyleImages"/>
+
+                <ImageView
+                    android:id="@+id/imgTopStringClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img__rubbish_bin"
+                    style="@style/StyleImages"/>
+
+                <CheckBox
+                    android:id="@+id/chkTopStringAutoCount"
+                    android:text="@string/str_chk_auto_count"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBottomFunction"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnBottomStringCount"
+                    android:text="@string/str_btn_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/StyleBottomButton"
+                    />
+
+                <ImageView
+                    android:id="@+id/imgBottomStringCopy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_copy_content"
+                    style="@style/StyleImages"/>
+
+                <ImageView
+                    android:id="@+id/imgBottomStringClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img__rubbish_bin"
+                    style="@style/StyleImages"/>
+
+                <CheckBox
+                    android:id="@+id/chkBottomStringAutoCount"
+                    android:text="@string/str_chk_auto_count"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/txtBottomString"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="@string/str_hint_enter_a_text_here_bottom"
+                android:gravity="center"
+                style="@style/StyleBottomEditText"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

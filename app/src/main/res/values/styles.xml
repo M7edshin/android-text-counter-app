@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="StyleTopEditText">
+        <item name="android:background">@color/colorTopEditText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="StyleBottomEditText">
+        <item name="android:background">@color/colorBottomEditText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="StyleTopButton">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorBackground</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">#1B5E20</item>
+    </style>
+
+    <style name="StyleBottomButton">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorBackground</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">#2962FF</item>
+    </style>
+
+    <style name="StyleImages">
+        <item name="android:padding">5dp</item>
+    </style>
+
+</resources>
