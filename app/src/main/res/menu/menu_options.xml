@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btnMyApps"
+        android:title="Check my Apps"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/btnReport"
+        android:title="Report a bug"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/btnSuggest"
+        android:title="Suggest"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/btnExit"
+        android:title="Exit"
+        app:showAsAction="never" />
+
+</menu>
