@@ -2,23 +2,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/btnMyApps"
-        android:title="Check my Apps"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/btnReport"
-        android:title="Report a bug"
+        android:id="@+id/option_how_to_use"
+        android:title="@string/option_how_to_use"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/btnSuggest"
-        android:title="Suggest"
+        android:title="@string/suggest_or_report"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/btnExit"
-        android:title="Exit"
+        android:title="@string/exit"
         app:showAsAction="never" />
 
 </menu>

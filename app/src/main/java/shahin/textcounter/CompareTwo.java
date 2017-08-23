@@ -4,7 +4,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -18,6 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -28,29 +31,6 @@ public class CompareTwo extends AppCompatActivity {
     EditText txtTopString;
     @BindView(R.id.btnTopStringCount)
     Button btnTopStringCount;
-    @BindView(R.id.imgTopStringCopy)
-    ImageView imgTopStringCopy;
-    @BindView(R.id.imgTopStringClear)
-    ImageView imgTopStringClear;
-    @BindView(R.id.chkTopStringAutoCount)
-    CheckBox chkTopStringAutoCount;
-
-    @BindView(R.id.txtBottomString)
-    EditText txtBottomString;
-    @BindView(R.id.btnBottomStringCount)
-    Button btnBottomStringCount;
-    @BindView(R.id.imgBottomStringCopy)
-    ImageView imgBottomStringCopy;
-    @BindView(R.id.imgBottomStringClear)
-    ImageView imgBottomStringClear;
-    @BindView(R.id.chkBottomStringAutoCount)
-    CheckBox chkBottomStringAutoCount;
-
-    //Global variables
-    private String copiedText;
-    private int topStringCharacters;
-    private int BottomStringCharacters;
-
     private final TextWatcher textWatcherTopString = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -59,7 +39,7 @@ public class CompareTwo extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            btnTopStringCount.setText("Count: " + String.valueOf(charSequence.length()) + " Char.");
+            btnTopStringCount.setText(getString(R.string.str_count) + String.valueOf(charSequence.length()) + getString(R.string.str_char));
         }
 
         @Override
@@ -67,7 +47,16 @@ public class CompareTwo extends AppCompatActivity {
 
         }
     };
-
+    @BindView(R.id.imgTopStringCopy)
+    ImageView imgTopStringCopy;
+    @BindView(R.id.imgTopStringClear)
+    ImageView imgTopStringClear;
+    @BindView(R.id.chkTopStringAutoCount)
+    CheckBox chkTopStringAutoCount;
+    @BindView(R.id.txtBottomString)
+    EditText txtBottomString;
+    @BindView(R.id.btnBottomStringCount)
+    Button btnBottomStringCount;
     private final TextWatcher textWatcherBottomString = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -76,7 +65,7 @@ public class CompareTwo extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            btnBottomStringCount.setText("Count: " + String.valueOf(charSequence.length()) + " Char.");
+            btnBottomStringCount.setText(getString(R.string.str_count) + String.valueOf(charSequence.length()) + getString(R.string.str_char));
         }
 
         @Override
@@ -84,6 +73,62 @@ public class CompareTwo extends AppCompatActivity {
 
         }
     };
+    @BindView(R.id.imgBottomStringCopy)
+    ImageView imgBottomStringCopy;
+    @BindView(R.id.imgBottomStringClear)
+    ImageView imgBottomStringClear;
+    @BindView(R.id.chkBottomStringAutoCount)
+    CheckBox chkBottomStringAutoCount;
+    @BindView(R.id.btnTakeTheDiff)
+    Button btnTakeTheDiff;
+    @BindView(R.id.txtDifferentString)
+    EditText txtDifferentString;
+    @BindView(R.id.btnCountDiff)
+    Button btnCountDiff;
+    @BindView(R.id.imgCopyDiff)
+    ImageView imgCopyDiff;
+    @BindView(R.id.imgClearDiff)
+    ImageView imgClearDiff;
+    //Global variables
+    private String copiedText;
+    private int topStringCharacters;
+    private int bottomStringCharacters;
+    private int diffStringCharacters;
+
+    //Show the difference between two strings
+    private static String difference(String str1, String str2) {
+        if (str1 == null) {
+            return str2;
+        }
+        if (str2 == null) {
+            return str1;
+        }
+        int at = indexOfDifference(str1, str2);
+        if (at == -1) {
+            return "";
+        }
+        return str2.substring(at);
+    }
+
+    private static int indexOfDifference(String str1, String str2) {
+        if (str1 == str2) {
+            return -1;
+        }
+        if (str1 == null || str2 == null) {
+            return 0;
+        }
+        int i;
+        for (i = 0; i < str1.length() && i < str2.length(); ++i) {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                break;
+            }
+        }
+        if (i < str2.length() || i < str1.length()) {
+            return i;
+        }
+        return -1;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,43 +192,91 @@ public class CompareTwo extends AppCompatActivity {
             }
         });
 
+        btnTakeTheDiff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (txtTopString.getText().toString().isEmpty() || txtBottomString.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), R.string.str_enter_strings_first, Toast.LENGTH_SHORT).show();
+                } else {
+                    String difference = difference(txtTopString.getText().toString(), txtBottomString.getText().toString());
+                    int length = difference.length();
+                    txtDifferentString.setText(difference);
+                    btnCountDiff.setText(getString(R.string.str_count) + String.valueOf(length) + getString(R.string.str_char));
+                }
+
+            }
+        });
+
+        btnCountDiff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                countDiff();
+            }
+        });
+
+        imgCopyDiff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                copyDiff();
+            }
+        });
+
+        imgClearDiff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearDiff();
+            }
+        });
+
+
     }
 
     /**
      * Count characters in a string
      */
-    private void countTopString(){
+    private void countTopString() {
         topStringCharacters = txtTopString.getText().toString().trim().length();
-        btnTopStringCount.setText("Count: " + String.valueOf(topStringCharacters) + " Char.");
-
+        if (topStringCharacters < 1) {
+            Toast.makeText(getApplicationContext(), R.string.str_pls_enter_txt_first, Toast.LENGTH_SHORT).show();
+        } else {
+            btnTopStringCount.setText(getString(R.string.str_count) + String.valueOf(topStringCharacters) + getString(R.string.str_char));
+        }
     }
 
     /**
      * Copy the string text
      */
-    private void copyTopString(){
-        Toast.makeText(getApplicationContext(), R.string.str_toast_text_copied, Toast.LENGTH_SHORT).show();
+    private void copyTopString() {
         copiedText = txtTopString.getText().toString();
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("TopString", copiedText);
-        clipboard.setPrimaryClip(clip);
+        if (copiedText.isEmpty()) {
+            Toast.makeText(getApplicationContext(), R.string.str_pls_enter_txt_first, Toast.LENGTH_SHORT).show();
+        } else {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText(getString(R.string.str_topstring), copiedText);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getApplicationContext(), R.string.str_toast_text_copied, Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
      * Clear the EditText view
      */
-    private void clearTopString(){
-        txtTopString.setText("");
+    private void clearTopString() {
+        if (txtTopString.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), R.string.str_pls_enter_txt_first, Toast.LENGTH_SHORT).show();
+        } else {
+            txtTopString.setText("");
+        }
     }
 
     /**
      * Perform auto counting characters
      */
-    private void autoCountTopString(){
-        if(chkTopStringAutoCount.isChecked()){
+    private void autoCountTopString() {
+        if (chkTopStringAutoCount.isChecked()) {
             Toast.makeText(getApplicationContext(), R.string.str_toast_auto_text_on, Toast.LENGTH_SHORT).show();
             txtTopString.addTextChangedListener(textWatcherTopString);
-        }else{
+        } else {
             Toast.makeText(getApplicationContext(), R.string.str_toast_auto_text_off, Toast.LENGTH_SHORT).show();
             txtTopString.removeTextChangedListener(textWatcherTopString);
         }
@@ -192,42 +285,84 @@ public class CompareTwo extends AppCompatActivity {
     /**
      * Count characters in a string
      */
-    private void countBottomString(){
-        BottomStringCharacters = txtBottomString.getText().toString().trim().length();
-        btnBottomStringCount.setText("Count: " + String.valueOf(BottomStringCharacters) + " Char.");
+    private void countBottomString() {
+        bottomStringCharacters = txtBottomString.getText().toString().trim().length();
+        if (bottomStringCharacters < 1) {
+            Toast.makeText(getApplicationContext(), R.string.str_pls_enter_txt_first, Toast.LENGTH_SHORT).show();
+        } else {
+            btnBottomStringCount.setText(getString(R.string.str_count) + String.valueOf(bottomStringCharacters) + getString(R.string.str_char));
+        }
     }
 
     /**
      * Copy the string text
      */
-    private void copyBottomString(){
-        Toast.makeText(getApplicationContext(), R.string.str_toast_text_copied, Toast.LENGTH_SHORT).show();
+    private void copyBottomString() {
         copiedText = txtBottomString.getText().toString();
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("BottomString", copiedText);
-        clipboard.setPrimaryClip(clip);
+        if (copiedText.isEmpty()) {
+            Toast.makeText(getApplicationContext(), R.string.str_pls_enter_txt_first, Toast.LENGTH_SHORT).show();
+        } else {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText(getString(R.string.str_bottomstring), copiedText);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getApplicationContext(), R.string.str_toast_text_copied, Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
      * Clear the EditText view
      */
-    private void clearBottomString(){
+    private void clearBottomString() {
         txtBottomString.setText("");
     }
 
     /**
      * Perform auto counting characters
      */
-    private void autoCountBottomString(){
-        if(chkBottomStringAutoCount.isChecked()){
+    private void autoCountBottomString() {
+        if (chkBottomStringAutoCount.isChecked()) {
             Toast.makeText(getApplicationContext(), R.string.str_toast_auto_text_on, Toast.LENGTH_SHORT).show();
             txtBottomString.addTextChangedListener(textWatcherBottomString);
-        }else{
+        } else {
             Toast.makeText(getApplicationContext(), R.string.str_toast_auto_text_off, Toast.LENGTH_SHORT).show();
             txtBottomString.removeTextChangedListener(textWatcherBottomString);
         }
     }
 
+    /**
+     * Count characters in a string
+     */
+    private void countDiff() {
+        diffStringCharacters = txtDifferentString.getText().toString().trim().length();
+        if (diffStringCharacters < 1) {
+            Toast.makeText(getApplicationContext(), R.string.str_compare_strings_first, Toast.LENGTH_SHORT).show();
+        } else {
+            btnCountDiff.setText(getString(R.string.str_count) + String.valueOf(diffStringCharacters) + getString(R.string.str_char));
+        }
+    }
+
+    /**
+     * Copy the string text
+     */
+    private void copyDiff() {
+        copiedText = txtDifferentString.getText().toString();
+        if (copiedText.isEmpty()) {
+            Toast.makeText(getApplicationContext(), R.string.str_compare_strings_first, Toast.LENGTH_SHORT).show();
+        } else {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText(getString(R.string.str_diffstring), copiedText);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getApplicationContext(), R.string.str_toast_text_copied, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    /**
+     * Clear the EditText view
+     */
+    private void clearDiff() {
+        txtDifferentString.setText("");
+    }
 
     /**
      * Methods relate to the Menu option
@@ -245,19 +380,11 @@ public class CompareTwo extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.btnMyApps:
-                String urlWebsite = "https://play.google.com/store/apps/developer?id=Mohamed+Shahin";
-                Uri uriWebpage = Uri.parse(urlWebsite);
-                Intent intentWebsite = new Intent(Intent.ACTION_VIEW, uriWebpage);
-                if (intentWebsite.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intentWebsite);
-                }
-                return true;
-            case R.id.btnReport:
-                sendEmail("Report a bug");
+            case R.id.option_how_to_use:
+                startActivity(new Intent(this, HowToUseActivity.class));
                 return true;
             case R.id.btnSuggest:
-                sendEmail("Suggest a feature or recommendation");
+                sendEmail("Suggest or Report");
                 return true;
             case R.id.btnExit:
                 finish();

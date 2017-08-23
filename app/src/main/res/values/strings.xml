@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Text Counter</string>
+    <string name="app_name">Text Counter and Comparison</string>
     <string name="str_toast_text_copied">Text Copied</string>
     <string name="str_toast_auto_text_on">Auto counting text is ON</string>
     <string name="str_toast_auto_text_off">Auto counting text is OFF</string>
@@ -8,4 +8,25 @@
     <string name="str_btn_copy">Copy</string>
     <string name="str_chk_auto_count">Auto Count</string>
     <string name="str_hint_enter_a_text_here_bottom">Enter a text here - Bottom</string>
+    <string name="title_activity_compare_strings">CompareStringsActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="str_pls_enter_txt_first">Please enter a text first</string>
+    <string name="str_count"> Count: </string>
+    <string name="str_char"> Char. </string>
+    <string name="str_topstring">TopString</string>
+    <string name="str_enter_strings_first">Please enter Top and Bottom text first</string>
+    <string name="str_compare_strings_first">Please compare Top and Bottom text first</string>
+    <string name="str_bottomstring">BottomString</string>
+    <string name="str_diffstring">DiffString</string>
+    <string name="option_how_to_use">How to use?</string>
+    <string name="suggest_or_report">Suggest or Report</string>
+    <string name="exit">Exit</string>
+    <string name="title_activity_how_to_use">HowToUseActivity</string>
+    <string name="compare_top_to_bottom_text">Compare Top to Bottom Text</string>
+    <string name="difference_characters_or_words_will_be_displayed_here">Difference characters or words will be displayed here</string>
+    <string name="how_to_use">How to use\n\nThe app is very simple idea. To return the difference between two text.
+The main text is bottom text where you compare it to the top text to return what difference the bottom text has (Your main).
+\n\nFor example\n\n\nTop text\n\nMy name is John Cena (Our Top text)\n\nBottom text\n\nMy name is John Rokaaaaaaaas (Comparing against it)\n\nResult\n\nRokaaaaaaaas\n\n\nWhat happens here is that the app compare character by character and return the characters that didn’t match compared to Top Text\n\nYou can auto count during typing so if you would count how many characters you are typing
+\n\nYou can copy and remove with easy touch\n\nMaximum characters to be entered in the text area is 200 only for now\n\nPlease let me know if you have a suggestion or report a bug. Thank you
+</string>
 </resources>
