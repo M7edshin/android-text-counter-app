@@ -29,4 +29,5 @@ The main text is bottom text where you compare it to the top text to return what
 \n\nFor example\n\n\nTop text\n\nMy name is John Cena (Our Top text)\n\nBottom text\n\nMy name is John Rokaaaaaaaas (Comparing against it)\n\nResult\n\nRokaaaaaaaas\n\n\nWhat happens here is that the app compare character by character and return the characters that didn’t match compared to Top Text\n\nYou can auto count during typing so if you would count how many characters you are typing
 \n\nYou can copy and remove with easy touch\n\nMaximum characters to be entered in the text area is 200 only for now\n\nPlease let me know if you have a suggestion or report a bug. Thank you
 </string>
+    <string name="cannot_compare_length">Cannot compare the two text unless the Bottom Text (Main) is longer than the Top Text</string>
 </resources>

@@ -197,13 +197,16 @@ public class CompareTwo extends AppCompatActivity {
             public void onClick(View view) {
                 if (txtTopString.getText().toString().isEmpty() || txtBottomString.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), R.string.str_enter_strings_first, Toast.LENGTH_SHORT).show();
-                } else {
-                    String difference = difference(txtTopString.getText().toString(), txtBottomString.getText().toString());
-                    int length = difference.length();
-                    txtDifferentString.setText(difference);
-                    btnCountDiff.setText(getString(R.string.str_count) + String.valueOf(length) + getString(R.string.str_char));
                 }
 
+                if (txtTopString.getText().toString().length() > txtBottomString.getText().toString().length()) {
+                    Toast.makeText(getApplicationContext(), R.string.cannot_compare_length, Toast.LENGTH_SHORT).show();
+                }
+
+                String difference = difference(txtTopString.getText().toString(), txtBottomString.getText().toString());
+                int length = difference.length();
+                txtDifferentString.setText(difference);
+                btnCountDiff.setText(getString(R.string.str_count) + String.valueOf(length) + getString(R.string.str_char));
             }
         });
 

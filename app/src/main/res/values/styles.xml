@@ -53,6 +53,7 @@
         <item name="android:background">@android:drawable/dialog_holo_light_frame</item>
         <item name="android:hint">@string/difference_characters_or_words_will_be_displayed_here
         </item>
+        <item name="android:textColor">@color/colorBlack</item>
         <item name="android:enabled">false</item>
     </style>
 
