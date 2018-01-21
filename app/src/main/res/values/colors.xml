@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2018 Mohamed Shahin.  All rights reserved.
+  -->
+
 <resources>
-    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#000000</color>
-    <color name="colorBlack">#000000</color>
-    <color name="colorBackground">#212121</color>
+    <color name="colorAccent">#E91E63</color>
 </resources>

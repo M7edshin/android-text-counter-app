@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2018 Mohamed Shahin.  All rights reserved.
+ */
+
 package shahin.textcounter;
 
 import android.content.Context;

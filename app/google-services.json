@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "819646881529",
+    "firebase_url": "https://text-counter-app.firebaseio.com",
+    "project_id": "text-counter-app",
+    "storage_bucket": "text-counter-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819646881529:android:1ee56eeb6b388039",
+        "android_client_info": {
+          "package_name": "shahin.textcounter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819646881529-8tb4gb2srd3n966ihf4lno83r5f9cooc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "shahin.textcounter",
+            "certificate_hash": "ce184a31bfd9d0a447e04239d075ea41928a39fc"
+          }
+        },
+        {
+          "client_id": "819646881529-f7chidjjnp9t4ilinuevigporsgmglal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDOEabwHmW7BVLXCS-P1cDKgcoVB0tz6E"
+        },
+        {
+          "current_key": "AIzaSyD1iEh5lQulTBGZfENj0Cd3KxprLEbHQMY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819646881529-f7chidjjnp9t4ilinuevigporsgmglal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

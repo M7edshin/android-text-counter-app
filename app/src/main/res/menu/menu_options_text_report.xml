@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright © 2018 Mohamed Shahin.  All rights reserved.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_report"
+        android:title="@string/report"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_report" />
+
+    <item
+        android:id="@+id/action_copy"
+        android:title="@string/copy"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_copy" />
+
+    <item
+        android:id="@+id/action_comparison_activity"
+        android:title="@string/find_difference"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_find" />
+
+    <item
+        android:id="@+id/action_share"
+        android:title="@string/share"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_email_us"
+        android:title="@string/suggest_or_report"
+        app:showAsAction="never" />
+
+</menu>

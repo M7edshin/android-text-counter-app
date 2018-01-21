@@ -1,3 +1,7 @@
 <component name="CopyrightManager">
-  <settings default="" />
+  <settings>
+    <module2copyright>
+      <element module="All" copyright="M7edShinCopyRights" />
+    </module2copyright>
+  </settings>
 </component>

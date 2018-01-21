@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2018 Mohamed Shahin.  All rights reserved.
+  -->
+
 <resources>
     <dimen name="size_10">10dp</dimen>
     <dimen name="size_5">5dp</dimen>
