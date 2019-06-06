@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright © 2018 Mohamed Shahin.  All rights reserved.
+  ~ Copyright © 2019 Shahin.  All rights reserved.
   -->
-
 <resources>
-    <dimen name="size_10">10dp</dimen>
-    <dimen name="size_5">5dp</dimen>
+    <dimen name="size_25_sp">25sp</dimen>
+    <dimen name="size_20_sp">20sp</dimen>
 </resources>

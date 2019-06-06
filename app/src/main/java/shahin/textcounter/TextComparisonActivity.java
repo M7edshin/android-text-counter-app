@@ -1,51 +1,46 @@
-/*
- * Copyright © 2018 Mohamed Shahin.  All rights reserved.
- */
-
 package shahin.textcounter;
+
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.MobileAds;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TextComparisonActivity extends AppCompatActivity {
 
+    //View Declaration
     @BindView(R.id.et_original_text)
     EditText et_original_text;
-
     @BindView(R.id.et_changed_text)
     EditText et_changed_text;
-
-    @BindView(R.id.tv_difference_text)
-    TextView tv_difference_text;
-
+    @BindView(R.id.et_difference)
+    EditText et_difference;
     @BindView(R.id.btn_copy_original)
     Button btn_copy_original;
-
     @BindView(R.id.btn_copy_changed)
     Button btn_copy_changed;
-
     @BindView(R.id.btn_copy_difference)
     Button btn_copy_difference;
-
     @BindView(R.id.tv_characters)
     TextView tv_characters;
+    @BindView(R.id.btn_calc_characters)
+    TextView btn_calc_characters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,40 +48,39 @@ public class TextComparisonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_text_comparison);
         ButterKnife.bind(this);
 
-        MobileAds.initialize(this, "ca-app-pub-1885749404874590~8434977462");
-
+        //Initialize Ad
+        MobileAds.initialize(this, getString(R.string.admob_app_id));
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        btn_copy_original.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String original = et_original_text.getText().toString().trim();
-                copy(original);
-            }
+        //Set buttons action
+        btn_copy_original.setOnClickListener(v -> {
+            String original = et_original_text.getText().toString().trim();
+            copy(original);
         });
+        btn_copy_changed.setOnClickListener(v -> {
+            String changed = et_changed_text.getText().toString().trim();
+            copy(changed);
+        });
+        btn_copy_difference.setOnClickListener(v -> {
+            String difference = et_difference.getText().toString().trim();
+            copy(difference);
+        });
+        btn_calc_characters.setOnClickListener(v -> getTotalCharacters());
 
-        btn_copy_changed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String changed = et_changed_text.getText().toString().trim();
-                copy(changed);
-            }
-        });
+        //Default initialization
+        et_original_text.setText(R.string.comparison_example_original);
+        et_changed_text.setText(R.string.comparison_example_changed);
+        et_difference.setText(R.string.comparison_example_difference);
 
-        btn_copy_difference.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String difference = tv_difference_text.getText().toString().trim();
-                copy(difference);
-            }
-        });
+        //Hide the keyboard from displaying at the beginning
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_options_text_comparison, menu);
+        getMenuInflater().inflate(R.menu.menu_text_comparison, menu);
         return true;
     }
 
@@ -101,9 +95,6 @@ public class TextComparisonActivity extends AppCompatActivity {
                 return true;
             case R.id.action_reset:
                 reset();
-                return true;
-            case R.id.action_count:
-                totalCharacters();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -155,25 +146,25 @@ public class TextComparisonActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), R.string.message_no_differences, Toast.LENGTH_SHORT).show();
             } else {
                 String textDifferences = difference(original, changed);
-                tv_difference_text.setText(textDifferences);
+                et_difference.setText(textDifferences);
             }
         }
 
     }
 
-    private void totalCharacters() {
+    private void getTotalCharacters() {
         int original = et_original_text.getText().toString().trim().length();
         int changed = et_changed_text.getText().toString().trim().length();
-        int difference = tv_difference_text.getText().toString().trim().length();
+        int difference = et_difference.getText().toString().trim().length();
 
         if (original < 1 || changed < 1 || difference < 1) {
             Toast.makeText(getApplicationContext(), R.string.message_text_empty, Toast.LENGTH_SHORT).show();
         } else {
             String report = getString(R.string.report_part_one) + getString(R.string.tab) +
-                    String.valueOf(original) + getString(R.string.report_part_two) +
-                    getString(R.string.tab) + String.valueOf(changed) +
+                    original + getString(R.string.report_part_two) +
+                    getString(R.string.tab) + changed +
                     getString(R.string.report_part_three) + getString(R.string.tab) +
-                    String.valueOf(difference);
+                    difference;
             tv_characters.setText(report);
             Toast.makeText(getApplicationContext(), R.string.char_calculated, Toast.LENGTH_SHORT).show();
         }
@@ -193,8 +184,8 @@ public class TextComparisonActivity extends AppCompatActivity {
     private void reset() {
         et_original_text.setText("");
         et_changed_text.setText("");
-        tv_difference_text.setText("");
-        tv_characters.setText(getString(R.string.total_characters));
+        et_difference.setText("");
+        tv_characters.setText(getString(R.string.characters_result));
         Toast.makeText(getApplicationContext(), R.string.clear, Toast.LENGTH_SHORT).show();
     }
 

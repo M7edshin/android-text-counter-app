@@ -1,45 +1,55 @@
-<!--
-  ~ Copyright © 2018 Mohamed Shahin.  All rights reserved.
-  -->
-
 <resources>
-    <string name="app_name">Text Report</string>
+    <!--TextReportActivity-->
     <string name="hint_type_text_here">Get started by typing your text here</string>
+    <string name="app_name">Text Report</string>
     <string name="auto_counting">Auto counting</string>
-    <string name="total_characters">Characters</string>
     <string name="message_text_empty">Text field is empty!</string>
     <string name="message_auto_count_on">Auto counting is ON</string>
     <string name="message_auto_count_off">Auto counting is OFF</string>
     <string name="message_copied">Text is copied</string>
     <string name="reset">Reset</string>
-    <string name="copy">Copy</string>
     <string name="word_frequency">Word Frequency</string>
     <string name="report">Report</string>
+    <string name="compare_two_texts">Go to Comparison</string>
+    <string name="rate_the_app">Rate the App</string>
     <string name="share">Share</string>
-    <string name="share_subject">Enter a subject here</string>
     <string name="share_text">Share a text</string>
-    <string name="find_difference">Find Difference</string>
-    <string name="hint_original_text">Get started by typing your original text here</string>
-    <string name="hint_changed_text">Get started by typing your changed text here</string>
-    <string name="original">Original</string>
-    <string name="changed">Changed</string>
-    <string name="difference">Difference</string>
-    <string name="suggest_or_report">Suggest or Report</string>
-    <string name="compare_text">Compare text</string>
-    <string name="report_part_one">Characters (Spaces are counted)\n\nOriginal text:</string>
-    <string name="report_part_two">\nChanged text:</string>
-    <string name="report_part_three">\nDifference text:</string>
-    <string name="comparison">Comparison</string>
     <string name="lowercase">Lowercase</string>
     <string name="uppercase">Uppercase</string>
     <string name="text_lowercase">Text Uppercase</string>
     <string name="text_uppercase">Text Uppercase</string>
     <string name="suggest_report">Suggest or Report</string>
     <string name="your_message">Your Message</string>
+    <string name="send_mail">Send mail</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="suggest_or_report">Suggest or Report</string>
+
+    <!--ComparisonActivity-->
+    <string name="share_subject">Enter a subject here</string>
+    <string name="hint_original_text">Get started by typing your original text here</string>
+    <string name="hint_changed_text">Get started by typing the text to compare to here</string>
+    <string name="copy">Copy…</string>
+    <string name="original">Original</string>
+    <string name="changed">Changed</string>
+    <string name="difference">Difference</string>
+    <string name="characters_result">Characters Result</string>
+    <string name="compare_text">Compare text</string>
+    <string name="report_part_one">Characters (Spaces are counted)\n\nOriginal text:</string>
+    <string name="report_part_two">\nChanged text:</string>
+    <string name="report_part_three">\nDifference text:</string>
+    <string name="comparison">Compare Texts</string>
     <string name="error_message_no_apps">There are no email clients or apps installed on your device.</string>
     <string name="message_no_differences">There are no differences found</string>
-    <string name="clear">Clear</string>
+    <string name="clear">Cleared</string>
     <string name="tab" translatable="false">\u0009\u0009\u0009\u0009</string>
     <string name="char_calculated">Characters calculated</string>
+    <string name="difference_text">Difference between texts will be displayed here</string>
+    <string name="calculate_characters">Calculate Characters</string>
+    <string name="text_characters">Characters</string>
+    <string name="comparison_example_original">e.g. My name is John and I am using Text Report</string>
+    <string name="comparison_example_changed">e.g. My name is John and I am using Text Report for texts comparison</string>
+    <string name="comparison_example_difference">for texts comparison</string>
+
+
 
 </resources>

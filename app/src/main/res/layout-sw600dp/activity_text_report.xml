@@ -9,10 +9,11 @@
 
     <EditText
         android:id="@+id/et_text"
-        style="@style/EditTextStyle"
+        style="@style/TabletEditTextStyle"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="600dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/hint_type_text_here"
         android:importantForAutofill="no"
@@ -27,23 +28,24 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/auto_counting"
+        android:textSize="@dimen/size_25_sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_text" />
 
     <Button
         android:id="@+id/btn_count"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/characters_result"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_word_freq" />
 
     <Button
         android:id="@+id/btn_word_freq"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -56,50 +58,42 @@
 
     <Button
         android:id="@+id/btn_lowercase"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/lowercase"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_report"
-        app:layout_constraintStart_toEndOf="@+id/btn_uppercase" />
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_uppercase"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/uppercase"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_report"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/report"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         ads:adSize="BANNER"
         ads:adUnitId="@string/admob_unit_id_text_report_activity"
-        ads:layout_constraintBottom_toTopOf="@+id/btn_lowercase"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

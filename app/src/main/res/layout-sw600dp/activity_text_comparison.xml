@@ -10,13 +10,14 @@
 
     <EditText
         android:id="@+id/et_original_text"
-        style="@style/ComparisonEditTextStyle"
+        style="@style/TabletComparisonEditTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/hint_original_text"
+        android:importantForAutofill="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,26 +25,28 @@
 
     <EditText
         android:id="@+id/et_changed_text"
-        style="@style/ComparisonEditTextStyle"
+        style="@style/TabletComparisonEditTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/hint_changed_text"
+        android:importantForAutofill="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_original_text" />
 
     <EditText
         android:id="@+id/et_difference"
-        style="@style/ComparisonDifferenceEditTextStyle"
+        style="@style/TabletComparisonDifferenceEditTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/difference_text"
+        android:importantForAutofill="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +54,7 @@
 
     <Button
         android:id="@+id/btn_copy_original"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -63,7 +66,7 @@
 
     <Button
         android:id="@+id/btn_copy_changed"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -76,7 +79,7 @@
 
     <Button
         android:id="@+id/btn_copy_difference"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -87,7 +90,7 @@
 
     <TextView
         android:id="@+id/tv_copy"
-        style="@style/ComparisonTextViewStyle"
+        style="@style/TabletComparisonTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -100,7 +103,7 @@
 
     <TextView
         android:id="@+id/tv_characters"
-        style="@style/ComparisonTextViewStyle"
+        style="@style/TabletComparisonTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -110,25 +113,28 @@
 
     <Button
         android:id="@+id/btn_calc_characters"
-        style="@style/ButtonStyle"
+        style="@style/TabletButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/calculate_characters"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_copy_original" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         ads:adSize="BANNER"
         ads:adUnitId="@string/admob_unit_id_text_comparison_activity"
+        ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintTop_toBottomOf="@+id/btn_copy_changed" />
+        ads:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
